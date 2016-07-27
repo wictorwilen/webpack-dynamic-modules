@@ -7,8 +7,6 @@ var webpack = new require("webpack")
 var nodemon = require('gulp-nodemon');
 var runSequence = require('run-sequence');
 
-var dtsgen = require('dts-generator')
-
 var staticFiles = ["./src/*.html"]
 var watcherfiles = ["./src/**/*.ts", "./src/**/*.html"]
 
@@ -48,20 +46,11 @@ gulp.task('nodemon', function (cb) {
 });
 
 gulp.task('default', function () {
-    return runSequence(['copy'], ['webpack'],['dts'])
+    return runSequence(['copy'], ['webpack'])
 });
 
 
 gulp.task('serve', ['nodemon'], function () {
     return gulp.watch(watcherfiles,
         ['default']);
-})
-
-gulp.task('dts', function () {
-    return dtsgen.default({
-        name: 'webpack-dynamic-modules',
-        project: './',
-        out: './dist/webpack-dynamic-modules.d.ts',
-        exclude: ['./typings/**/*.*', './node_modules/**/*.*']
-    });    
 })

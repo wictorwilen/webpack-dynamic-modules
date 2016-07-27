@@ -15,6 +15,7 @@
     "typescript": "^1.8.10"
   },
   "devDependencies": {
+    "dts-generator": "^1.7.0",
     "gulp-nodemon": "^2.1.0",
     "run-sequence": "^1.2.2",
     "ts-loader": "^0.8.2",

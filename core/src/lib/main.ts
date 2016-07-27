@@ -7,7 +7,6 @@ export module main {
     System.config({
         baseUrl: "/",
         map: {
-            "jQuery": "https://code.jquery.com/jquery-1.10.2.js",
         }
     });
     var widgets = [
@@ -18,6 +17,10 @@ export module main {
         {
             file: 'WidgetB',
             class: 'WidgetB'
+        },
+        {
+            file: 'ExternalWidget',
+            class: 'ExternalWidget'
         }
     ];
 
@@ -25,7 +28,11 @@ export module main {
        System.import(widget.file + ".js").then((scope) => {
             var loader = new WidgetLoader(scope);
             var w = loader.getInstance(widget.class, null);
-            console.log(w.render());
+            if(typeof w !== 'undefined') {
+                console.log(w.render());
+            }
+        }, (error) => {
+            console.log(`Widget loading error: ${error}`);
         });
     });
 }
