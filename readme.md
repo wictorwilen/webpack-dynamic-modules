@@ -3,6 +3,28 @@
 This is a demo that uses Webpack to bundle libraries and modules and System.js to dynamically load the modules, 
 including external modules from CDN.
 
+
+# **MULTIPLEWIDGETS BRANCH**
+The Multiplewidgets branch has one major change:
+
+* Multiple Widgets in the same file (WidgetA.ts)
+* Multiple Widgets in the same bundle (WidgetA.ts + WidgetAlhpa.ts)
+
+This does not work with *Webpack* since only the last imported module in each entry is exported
+
+Modifying Webpack, the MultiModule.js file, as follows makes it all work though :-)
+
+```JavaScript
+str.push("var export" + dep.module.id + " = __webpack_require__(");
+if (outputOptions.pathinfo)
+    str.push("/*! " + dep.request + " */");
+str.push("" + JSON.stringify(dep.module.id));
+str.push(")");
+str.push("\nfor(var i in Object.keys(export" + dep.module.id + ")) {\n\tmodule.exports[Object.keys(export" + dep.module.id + ")[i]] = export" + dep.module.id + "[Object.keys(export" + dep.module.id + ")[i]]\n}");
+```
+
+
+
 # DEMO
 
 ## Project: core

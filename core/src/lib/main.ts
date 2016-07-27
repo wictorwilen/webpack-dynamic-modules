@@ -21,6 +21,14 @@ export module main {
         {
             file: 'ExternalWidget',
             class: 'ExternalWidget'
+        },
+        {
+            file: 'WidgetA',
+            class: 'WidgetA2'
+        },
+        {
+            file: 'WidgetA',
+            class: 'WidgetAlpha'
         }
     ];
 

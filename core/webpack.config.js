@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var config = {
   entry: {
     main: ["./src/lib/main.ts", "./src/lib/Logger.ts"],
-    widgetA: ["./src/widgets/WidgetA.ts"],
+    widgetA: ["./src/widgets/WidgetA.ts","./src/widgets/WidgetAlpha.ts"],
     widgetB: ["./src/widgets/WidgetB.ts"]
   },
   output: {
